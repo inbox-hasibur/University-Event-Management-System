@@ -15,9 +15,9 @@ A centralized event management platform for IUBAT University to manage global, d
 
 ### 🛠️ Tech Stack
 
-* **Frontend:** React.js, Tailwind CSS,
+* **Frontend:** HTML, CSS, React.js, Tailwind CSS,
 * **Backend:** Django REST Framework
-* **Database:** PostgreSQL
+* **Database:** SQLite, PostgreSQL
 
 ### 📝 Future Scope
 
