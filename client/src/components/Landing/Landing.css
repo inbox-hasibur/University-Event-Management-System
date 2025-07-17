@@ -10,6 +10,7 @@
 }
 .landing__content {
   flex: 1;
+  margin: 0 0 220px 50px;
   max-width: 600px;
 }
 .landing__content h1 {
@@ -30,9 +31,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom:220px;
 }
 .landing__image img {
-  width: 100%;
+  width: 90%;
   max-width: 500px;
   height: auto;
   object-fit: contain;
