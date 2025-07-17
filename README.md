@@ -1,5 +1,5 @@
 ## 📚 (IUBAT) University Event Management System
-Links - 
+Client - https://iubat-events.vercel.app/
 
 A centralized event management platform for IUBAT University to manage global, departmental, and private events seamlessly. It enables students to check events, register, and vote for participation. Admins and managers can create and manage events efficiently.
 
