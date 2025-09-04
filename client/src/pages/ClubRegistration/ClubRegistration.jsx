@@ -1,0 +1,1 @@
+export default function ClubRegistration(){ return <h1>About</h1> }
