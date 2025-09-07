@@ -56,9 +56,8 @@ export default function Navbar() {
           ) : (
             <>
               <span className="navbar__user">Hi, <b>{user.username}</b></span>
-              <button type="button" className="logout-btn" onClick={handleLogout}>
-                Logout
-              </button>
+              <button type="button" className="profile-btn" onClick={() => navigate("/profile")}>Profile</button>
+              <button type="button" className="logout-btn" onClick={handleLogout}>Logout</button>
             </>
           )}
         </div>

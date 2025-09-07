@@ -136,6 +136,17 @@
   border-color: #c5ccd6;
 }
 
+.profile-btn, .logout-btn {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #d2d7de;
+  background: #f6f7f9;
+  cursor: pointer;
+  transition: all .15s ease;
+  margin-left: 6px;
+}
+.profile-btn:hover, .logout-btn:hover { background: #e9eef5; border-color: #c5ccd6; }
+
 
 
 /* Responsive Breakpoints */

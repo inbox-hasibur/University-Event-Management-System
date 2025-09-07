@@ -11,7 +11,10 @@ import Contact from "./pages/Contact/Contact.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Register from "./pages/Register/Register.jsx";
 import EventInfo from "./pages/EventInfo/EventInfo.jsx";
-
+import Profile from "./pages/Profile/Profile.jsx";
+import ManagerDashboard from "./pages/Manager/ManagerDashboard.jsx";
+import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
+import CreateEvent from "./pages/Events/CreateEvent.jsx";
 export default function App() {
   return (
     <>
@@ -25,6 +28,12 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/dashboard/manager" element={<ManagerDashboard />} />
+        <Route path="/dashboard/admin" element={<AdminDashboard />} />
+        <Route path="/events/:id" element={<EventInfo />} />
+        <Route path="/dashboard/manager/events/new" element={<CreateEvent />} />
+        <Route path="/dashboard/admin/events/new" element={<CreateEvent />} />
       </Routes>
       <Footer /> {/* same footer on every page */}
     </>
