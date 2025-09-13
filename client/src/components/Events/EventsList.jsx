@@ -1,14 +1,19 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { listEvents } from "../../api/events";
+import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
-export default function EventsList({ mineDefault = false }) {
+
+export default function EventsList({ mineDefault = false, statusDefault = "" }) {
   const initial = useMemo(() => ({
     mine: mineDefault ? "1" : "0",
-    status: "",
-    category: "",
-    featured: "0",
-    ordering: "start_time",
-  }), [mineDefault]);
+    status: statusDefault,          // <-- new (defaults to "")
+     category: "",
+     featured: "0",
+     ordering: "start_time",
+  }), [mineDefault, statusDefault]);
+
+  const { user } = useAuth();
 
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -111,22 +116,46 @@ export default function EventsList({ mineDefault = false }) {
 
       {err && <p className="err">{String(err).slice(0, 200)}…</p>}
 
-      <ul className="events-grid">
-        {events.map((ev) => (
-          <li key={ev.id} className="event-card">
-            <h4 className="event-title">{ev.title}</h4>
-            <p className="event-sub">
-              {ev.category.replace("_", " ")} •{" "}
-              {new Date(ev.start_time).toLocaleString()}
-            </p>
-            <p className="event-reg">
-              <b>{ev.registration_open ? "Registration is going on" : "Registration closed"}</b>
-            </p>
-            {ev.cover_url && (
-              <img src={ev.cover_url} alt="" className="event-img" />
-            )}
-          </li>
-        ))}
+      {/* 3 cards per row on desktop */}
+      <ul className="events-grid events-3">
+        {events.map((ev) => {
+          const canEdit =
+            user?.role === "admin" ||
+            (user?.role === "manager" && user?.username === ev.created_by_username);
+
+          const editHref =
+            user?.role === "admin"
+              ? `/dashboard/admin/events/${ev.id}/edit`
+              : `/dashboard/manager/events/${ev.id}/edit`;
+
+          return (
+            <li key={ev.id} className="event-card">
+              {ev.cover_url && <img src={ev.cover_url} alt="" className="event-img" />}
+
+              <div className="event-body">
+                <div className="event-topline">
+                  <span className={`badge cat-${ev.category}`}>
+                    {ev.category.replace("_", " ")}
+                  </span>
+                  {ev.featured && <span className="badge featured">Featured</span>}
+                </div>
+
+                <h4 className="event-title">{ev.title}</h4>
+                <p className="event-sub">
+                  {new Date(ev.start_time).toLocaleString()}
+                </p>
+                <p className="event-reg">
+                  <b>{ev.registration_open ? "Registration is going on" : "Registration closed"}</b>
+                </p>
+
+                <div className="event-actions">
+                  <Link className="btn-ghost" to={`/events/${ev.id}`}>View</Link>
+                  {canEdit && <Link className="primary" to={editHref}>Edit</Link>}
+                </div>
+              </div>
+            </li>
+          );
+        })}
         {!loading && !events.length && <p>No events match the filters.</p>}
       </ul>
     </div>

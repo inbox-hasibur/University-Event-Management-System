@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../Profile/profile.css";
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { adminStats, adminListUsers, adminAssignMgr, adminDeleteUser } from "../../api/profile";
 import EventsList from "../../components/Events/EventsList.jsx";
-
 
 export default function AdminDashboard() {
   const { user, loading } = useAuth();
@@ -24,7 +23,7 @@ export default function AdminDashboard() {
 
   async function makeManager(id) {
     setErr(""); setMsg("");
-    try { await adminAssignMgr(id); setMsg("Role updated"); 
+    try { await adminAssignMgr(id); setMsg("Role updated");
       const updated = await adminListUsers(); setUsers(updated);
     } catch(e){ setErr(String(e)); }
   }
@@ -39,7 +38,11 @@ export default function AdminDashboard() {
   return (
     <main className="page-pad">
       <div className="container">
-        <h1>Admin Dashboard</h1>
+        {/* Title + Upload button */}
+        <div className="card" style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+          <h1 style={{margin:0}}>Admin Dashboard</h1>
+          <Link className="primary" to="/dashboard/admin/events/new">+ Upload Event</Link>
+        </div>
 
         <section className="card">
           <h3>Stats</h3>
@@ -55,7 +58,7 @@ export default function AdminDashboard() {
         </section>
 
         <section className="card">
-          <h3>Users</h3>
+          <h3 class= "usr">Users</h3>
           {msg && <p className="ok">{msg}</p>}
           {err && <p className="err">{err}</p>}
           <div style={{overflowX:"auto"}}>
@@ -87,10 +90,12 @@ export default function AdminDashboard() {
                 {!users.length && <tr><td colSpan="6">No users yet.</td></tr>}
               </tbody>
             </table>
-            <section>
-                <EventsList mineDefault={false} />
-            </section>
           </div>
+        </section>
+
+        {/* Events list for admins */}
+        <section>
+          <EventsList mineDefault={false} />
         </section>
       </div>
     </main>

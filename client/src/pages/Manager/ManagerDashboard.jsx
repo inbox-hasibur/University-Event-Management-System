@@ -1,7 +1,7 @@
 import React from "react";
 import "../Profile/profile.css";
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import EventsList from "../../components/Events/EventsList.jsx";
 
 export default function ManagerDashboard() {
@@ -12,28 +12,15 @@ export default function ManagerDashboard() {
   return (
     <main className="page-pad">
       <div className="container">
-        <h1>Manager Dashboard</h1>
+        {/* Title + Upload button */}
+        <div className="card" style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
+          <h1 style={{margin:0}}>Manager Dashboard</h1>
+          <Link className="primary" to="/dashboard/manager/events/new">+ Upload Event</Link>
+        </div>
 
-        <section className="card">
-          <h3>Upload Event</h3>
-          <p>(Coming soon — we’ll enable create/edit when the Events module is ready.)</p>
-        </section>
+        {/* Your events list with filters */}
         <section>
-            <EventsList mineDefault={true} />
-        </section>
-
-        <section className="card">
-          <h3>My Events</h3>
-          <div style={{display:"flex", gap:8, marginBottom:8}}>
-            <button className="primary" disabled>All</button>
-            <button className="primary" disabled>Uploaded by me</button>
-          </div>
-          <p>(Events table will appear here.)</p>
-        </section>
-
-        <section className="card">
-          <h3>Participants</h3>
-          <p>(Per-event participants list will be available after Events module.)</p>
+          <EventsList mineDefault={true} />
         </section>
       </div>
     </main>

@@ -35,3 +35,17 @@ export async function updateEvent(id, form) {
   if (!res.ok) throw new Error(data?.detail || raw || `HTTP ${res.status}`);
   return data;
 }
+
+
+// DELETE
+export async function deleteEvent(id) {
+  const res = await fetch(`/api/events/${id}/`, {
+    method: "DELETE",
+    credentials: "include",
+  });
+  if (!res.ok && res.status !== 204) {
+    const txt = await res.text();
+    throw new Error(txt || `HTTP ${res.status}`);
+  }
+  return true;
+}

@@ -1,3 +1,15 @@
+import React from "react";
+import "../Profile/profile.css";
+import EventsList from "../../components/Events/EventsList.jsx";
+
 export default function EventsPage() {
-  return <div style={{padding:16}}><h1>Events</h1></div>;
+  return (
+    <main className="page-pad">
+      <div className="container">
+        <h1>Events</h1>
+        {/* published only by default, with filters & 3-column grid */}
+        <EventsList mineDefault={false} statusDefault="published" />
+      </div>
+    </main>
+  );
 }

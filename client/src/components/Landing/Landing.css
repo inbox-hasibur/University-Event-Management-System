@@ -3,14 +3,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 2rem 6rem;
-  min-height: calc(100vh - 5rem);
+  min-height: calc(90vh - 5rem);
   max-width: 1400px;
   margin: 0 auto;
   gap: 4rem;
 }
 .landing__content {
   flex: 1;
-  margin: 0 0 220px 50px;
+  margin: 0 0 100px 50px;
   max-width: 600px;
 }
 .landing__content h1 {
@@ -31,7 +31,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom:220px;
+  margin-bottom:100px;
 }
 .landing__image img {
   width: 90%;

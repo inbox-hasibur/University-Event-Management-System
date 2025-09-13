@@ -19,7 +19,14 @@
 .primary {
   display:inline-block; padding:10px 14px; border-radius: 10px;
   border: 1px solid #1aa37b; background:#1aa37b; color:#fff; font-weight:600; cursor:pointer;
+  margin: 10px 0px;
 }
+
+.usr{
+  margin-bottom: 0.8em;
+
+}
+
 .ok { color:#0a6; margin-left: 12px; }
 .err { color:#c62828; margin-left: 12px; }
 
@@ -61,7 +68,7 @@
 /* buttons */
 .btn-ghost {
   padding: 8px 12px; border-radius: 10px; background:#fff;
-  border:1px solid #d7dde6; cursor:pointer;
+  border:1px solid #d7dde6; cursor:pointer; margin: 10px 0px;
 }
 .btn-ghost:hover { background:#eef2f6; }
 
@@ -77,3 +84,31 @@
 .event-sub { margin:0 0 6px; color:#475; }
 .event-reg { margin:0 0 8px; }
 .event-img { width:100%; border-radius:10px; margin-top:6px; display:block; }
+
+
+/* 3-column grid on desktop, responsive down */
+.events-grid.events-3 {
+  display:grid; gap:14px; padding:0; margin:8px 0 0; list-style:none;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 1100px) {.events-grid.events-3 { grid-template-columns: repeat(2, 1fr); }}
+@media (max-width: 700px)  {.events-grid.events-3 { grid-template-columns: 1fr; }}
+
+/* event card */
+.event-card { border:1px solid #e8ecf2; border-radius:14px; overflow:hidden; background:#fff; display:flex; flex-direction:column; }
+.event-img { width:100%; height:180px; object-fit:cover; display:block; }
+.event-body { padding:12px; display:flex; flex-direction:column; gap:6px; }
+.event-topline { display:flex; gap:6px; align-items:center; }
+.badge { font-size:12px; padding:3px 8px; border-radius:999px; border:1px solid #d7dde6; background:#f6f8fb; color:#334; }
+.badge.featured { border-color:#f1b000; background:#fff4d6; color:#8a5a00; }
+.badge.cat-departmental { background:#eef9f5; border-color:#cbeee1; color:#105a43; }
+.badge.cat-non_departmental { background:#eef2fb; border-color:#cfd7f8; color:#2a3f9a; }
+.badge.cat-outside { background:#fff0f0; border-color:#ffd6d6; color:#9a2a2a; }
+
+.event-title { margin:0; }
+.event-sub { margin:0; color:#556; font-size: 14px; }
+.event-reg { margin:0 0 8px; }
+
+.event-actions { display:flex; gap:8px; }
+.event-actions .btn-ghost { padding:8px 10px; border-radius:10px; border:1px solid #d7dde6; background:#fff; }
+.event-actions .btn-ghost:hover { background:#eef2f6; }

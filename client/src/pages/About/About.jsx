@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+import aboutImg from "../../assets/iubat_about.jpg"; // put your image here (jpg/png/webp)
 
 export default function About() {
   return (
@@ -11,8 +12,8 @@ export default function About() {
             <h1 className="about-title">About Us</h1>
             <p className="about-lead">
               We’re building a central place for students and organizers to
-              discover, publish, and manage university events—hackathons, job fairs,
-              club activities, and more.
+              discover, publish, and manage university events — hackathons, job
+              fairs, club activities, and more.
             </p>
 
             <div className="about-card">
@@ -27,8 +28,12 @@ export default function About() {
           </div>
 
           <div className="about-visual">
-            {/* Replace later with an illustration image if you have one */}
-            <div className="about-illustration" aria-hidden="true" />
+            <div
+              className="about-illustration"
+              role="img"
+              aria-label="Students collaborating at a campus event"
+              style={{ backgroundImage: `url(${aboutImg})` }}
+            />
           </div>
         </div>
       </section>

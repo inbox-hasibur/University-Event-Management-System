@@ -1,9 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-
 import Home from "./pages/Home/Home.jsx";
 import About from "./pages/About/About.jsx";
 import EventsPage from "./pages/Events/Events.jsx";
@@ -15,6 +13,7 @@ import Profile from "./pages/Profile/Profile.jsx";
 import ManagerDashboard from "./pages/Manager/ManagerDashboard.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import CreateEvent from "./pages/Events/CreateEvent.jsx";
+import EditEvent from "./pages/Events/EditEvent.jsx";
 export default function App() {
   return (
     <>
@@ -34,6 +33,8 @@ export default function App() {
         <Route path="/events/:id" element={<EventInfo />} />
         <Route path="/dashboard/manager/events/new" element={<CreateEvent />} />
         <Route path="/dashboard/admin/events/new" element={<CreateEvent />} />
+        <Route path="/dashboard/admin/events/:id/edit" element={<EditEvent />} />
+        <Route path="/dashboard/manager/events/:id/edit" element={<EditEvent />} />
       </Routes>
       <Footer /> {/* same footer on every page */}
     </>

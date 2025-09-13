@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getEvent } from "../../api/events";
 import "../Profile/profile.css";
 
 export default function EventInfo() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [event, setEvent] = useState(null);
   const [err, setErr] = useState("");
 
@@ -12,14 +14,50 @@ export default function EventInfo() {
     getEvent(id).then(setEvent).catch(e => setErr(String(e)));
   }, [id]);
 
-  if (err) return <main className="page-pad"><div className="container"><p className="err">{err}</p></div></main>;
-  if (!event) return <main className="page-pad"><div className="container"><p>Loading…</p></div></main>;
+  const goBack = () => {
+    // If there's real history, go back; otherwise go to /events
+    if (location.key !== "default" && window.history.length > 1) navigate(-1);
+    else navigate("/events");
+  };
+
+  if (err) {
+    return (
+      <main className="page-pad">
+        <div className="container">
+          <div className="card" style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+            <button className="btn-ghost" onClick={goBack}>← Back</button>
+          </div>
+          <p className="err">{err}</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (!event) {
+    return (
+      <main className="page-pad">
+        <div className="container">
+          <div className="card" style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+            <button className="btn-ghost" onClick={goBack}>← Back</button>
+          </div>
+          <p>Loading…</p>
+        </div>
+      </main>
+    );
+  }
 
   const regText = event.registration_open ? "Registration is going on" : "Registration closed";
 
   return (
     <main className="page-pad">
       <div className="container">
+        {/* Back bar */}
+        <div className="card" style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
+          <button className="btn-ghost" onClick={goBack}>← Back</button>
+          <span />
+        </div>
+
+        {/* Event card */}
         <div className="card">
           <h1 style={{marginTop:0}}>{event.title}</h1>
           <p><b>Category:</b> {event.category.replace("_", " ")}</p>
