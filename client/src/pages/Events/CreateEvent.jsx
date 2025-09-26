@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Profile/profile.css";
+import "../Profile/Profile.css";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { createEvent } from "../../api/events";

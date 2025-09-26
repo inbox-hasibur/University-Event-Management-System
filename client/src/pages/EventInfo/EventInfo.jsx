@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getEvent } from "../../api/events";
-import "../Profile/profile.css";
+import "../Profile/Profile.css";
 
 export default function EventInfo() {
   const { id } = useParams();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { listEvents } from "../../api/events";
 import { Link } from "react-router-dom";
-import "../../pages/Profile/profile.css";
+import "../../pages/Profile/Profile.css";
 
 export default function FeaturedEventsHome() {
   const [events, setEvents] = useState([]);
