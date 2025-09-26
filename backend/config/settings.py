@@ -129,7 +129,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173", "https://iubat-events.vercel.app"]  # Vite dev server
+CORS_ALLOW_ALL_ORIGINS = True  # Vite dev server
 CSRF_TRUSTED_ORIGINS = ["http://localhost:5173", "https://iubat-events.vercel.app"]
 
 REST_FRAMEWORK = {
