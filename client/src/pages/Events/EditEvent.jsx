@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../Profile/profile.css";
+import "../Profile/Profile.css";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { getEvent, updateEvent, deleteEvent } from "../../api/events";
