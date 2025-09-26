@@ -8,7 +8,7 @@ export default function FeaturedEventsHome() {
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    listEvents({ featured: "1", status: "published", ordering: "-created_at" })
+    listEvents({ featured: "1", status: "published", ordering: "-created_at", format: "json" })
       .then((d) => setEvents(d.slice(0, 6))) // show newest up to 6, 3 per row
       .catch((e) => setErr(String(e)));
   }, []);
