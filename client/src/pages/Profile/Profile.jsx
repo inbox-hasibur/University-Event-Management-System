@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { getProfile, updateProfile } from "../../api/profile";
 import { useNavigate, Link } from "react-router-dom";
-import "./profile.css";
+import "./Profile.css";
 
 export default function Profile() {
   const { user, loading } = useAuth();

@@ -1,6 +1,8 @@
-// client/src/api/client.js
+// TODO: read from env
+export const API_BASE_URL = "https://university-event-management-system-1.onrender.com";
+
 export async function api(path, { method = "GET", body, headers } = {}) {
-  const res = await fetch(`/api${path}`, {
+  const res = await fetch(`${API_BASE_URL}/api${path}`, {
     method,
     headers: { "Content-Type": "application/json", ...(headers || {}) },
     body: body ? JSON.stringify(body) : undefined,

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from corsheaders.defaults import default_headers, default_methods
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = "django-insecure-8#!oug)+h^hdbq838swsm@a^q2ni2-fh%g=t-n!#-3sog5(_o%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -129,8 +130,14 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]  # Vite dev server
-CSRF_TRUSTED_ORIGINS = ["http://localhost:5173"]
+# CORS_ALLOW_ALL_ORIGINS = True  # Vite dev server
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173", "https://iubat-events.vercel.app"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:5173", "https://iubat-events.vercel.app"]
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "X-CSRFToken",  # if using CSRF
+]
+
+CORS_ALLOW_METHODS = list(default_methods)
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],

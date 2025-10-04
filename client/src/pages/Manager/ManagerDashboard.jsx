@@ -1,5 +1,5 @@
 import React from "react";
-import "../Profile/profile.css";
+import "../Profile/Profile.css";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 import EventsList from "../../components/Events/EventsList.jsx";

@@ -12,7 +12,7 @@ export function getEvent(id) {
 // multipart create
 export async function createEvent(form) {
   // form is a FormData
-  const res = await fetch(`/api/events/`, {
+  const res = await api(`/events/`, {
     method: "POST",
     body: form,
     credentials: "include",
@@ -25,7 +25,7 @@ export async function createEvent(form) {
 
 // multipart update (for replace/remove cover later)
 export async function updateEvent(id, form) {
-  const res = await fetch(`/api/events/${id}/`, {
+  const res = await api(`/events/${id}/`, {
     method: "PATCH",
     body: form,
     credentials: "include",
@@ -39,7 +39,7 @@ export async function updateEvent(id, form) {
 
 // DELETE
 export async function deleteEvent(id) {
-  const res = await fetch(`/api/events/${id}/`, {
+  const res = await api(`/events/${id}/`, {
     method: "DELETE",
     credentials: "include",
   });

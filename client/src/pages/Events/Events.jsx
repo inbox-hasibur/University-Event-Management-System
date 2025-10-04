@@ -1,5 +1,5 @@
 import React from "react";
-import "../Profile/profile.css";
+import "../Profile/Profile.css";
 import EventsList from "../../components/Events/EventsList.jsx";
 
 export default function EventsPage() {
